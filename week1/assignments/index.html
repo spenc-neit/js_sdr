@@ -10,7 +10,120 @@
 </head>
 <body>
     <script>
+        //--------------create file---------------------
+        
+        
         alert("Hello world!");
+
+        //-------------------variables----------------
+
+        console.log(`---Variables---`)
+
+        var a = "life"
+        var b = 42
+        var c = true
+
+        console.log(`a: ${typeof a}`)
+        console.log(`b: ${typeof b}`)
+        console.log(`c: ${typeof c}`)
+
+        //---------------functions--------------------
+
+        console.log(`---Functions---`)
+
+        function add(n1, n2){
+            return n1 + n2
+        }
+
+        console.log("1+2=" + add(1, 2))
+
+        //--------------loops/arrays---------------------
+
+        console.log(`---Loops & Arrays---`)
+
+        var nums = []
+        for (let i=0; i<100; i++){
+            nums.push(i+1)
+        }
+
+        console.log(nums)
+
+        //---------------fizz buzz--------------------
+
+        console.log(`---Fizz Buzz---`)
+
+        var fb = []
+        for (let i=0; i<100; i++){
+            if ((i+1)%2==0 && (i+1)%3==0)
+                {fb.push("fizz buzz")}
+            else if ((i+1)%2==0)
+                {fb.push("fizz")}
+            else if ((i+1)%3==0)
+                {fb.push("buzz")}
+            else
+                {fb.push(i+1)}
+        }
+
+        console.log(fb)
+
+        //----------------objects-------------------
+
+        console.log(`---Objects---`)
+
+        var fbO = []
+        for (let i=0; i<100; i++){
+
+            if ((i+1)%2==0 && (i+1)%3==0)
+                {fbO.push({index:i+1, label:"fizz buzz"})}
+
+            else if ((i+1)%2==0)
+                {fbO.push({index:i+1, label:"fizz"})}
+
+            else if ((i+1)%3==0)
+                {fbO.push({index:i+1, label:"buzz"})}
+
+            else
+                {fbO.push({index:i+1})}
+        }
+
+        console.log(fbO)
+
+        //----------------object properties-------------------
+
+        console.log(`---Object Properties---`)
+
+        console.log(`I put the output of this one in an array because I want to keep all of the results from the previous assignments active in the webpage. If I don't put these into an array it'll flood the console.`)
+
+        console.log(`Interestingly, when they're in an array together they're easier to check. When they're on their own separate lines, they have to be expanded one by one, but in the array it'll show all of their properties at once. Pretty neat.`)
+
+        var output = []
+
+
+        for (let i=0; i<100; i++){
+
+            if (fbO[i].index%2==0 && fbO[i].index%3!=0){
+                output.push(fbO[i])
+            }
+            
+        }
+
+        console.log(output)
+
+        //----------------for loops-------------------
+
+        console.log(`---For/For In Loops---`)
+
+        console.log(`Did the same output array thing here as well.`)
+
+        output2 = []
+
+        for (let i=0; i<100; i++){
+            for (x in fbO[i])
+                {output2.push(x + ": " + fbO[i][x])}
+        }         
+
+        console.log(output2)
+
     </script>
 </body>
 </html>

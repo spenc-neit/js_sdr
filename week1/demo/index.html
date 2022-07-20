@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Week 1">
+    <meta name="author" content="S Roucoulet">
+    <title>demo 1</title>
+</head>
+<body>
+    
+    <script>
+
+        function add(_a=0, _b=0, func)
+        {
+            let c = _a + _b
+            func(c)
+        }
+
+        add(12, 12, c => console.log(c))
+
+        fetch('https://www.fishwatch.gov/api/species')
+
+        .then(function(response){return response.json()})
+
+        .then(function(data){
+
+            console.log(data)
+
+            
+            data[1][`Species Illustration Photo`].src
+
+            var body = document.querySelector(`body`)
+            var msg = ``;
+
+            for(let i=0; i<data.length; i++){
+
+                msg += `<div style="background-color:`
+
+                if(i%2==0){
+                    msg+=`#bbb">`
+                }
+                else{
+                    msg+=`white">`
+                }
+
+                for(index in data[i]){
+                    if(data[i][index] != null && typeof data[i][index] == `string`)
+                    msg += `${data[i][index]}<br>`
+                }
+                msg += `</div>`
+            }
+
+            //msg += `<img src="${data[1][`Species Illustration Photo`].src}" alt="fish">`
+
+            body.innerHTML = msg;
+
+
+        });
+    </script>
+
+</body>
+</html>

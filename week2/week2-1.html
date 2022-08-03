@@ -33,7 +33,12 @@
 		
 		for (let key in people[i])
 		{
-			tempdiv.innerHTML += `<p>${people[i][key]}</key>`
+			ptag = document.createElement(`p`)
+			tempText = document.createTextNode(`${people[i][key]}`)
+			ptag.appendChild(tempText)
+			
+			tempdiv.appendChild(ptag)
+			
 		}
 		
 		body.appendChild(tempdiv)

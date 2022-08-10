@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Week 2 Lab</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<script type="text/javascript" src="week2.js"></script>
+
+</head>
+
+<body>
+
+<div id="form">
+	
+    <form name="info">
+    <p>
+    First Name <br />
+    <input type="text" id="first-name"/> <span id="fn-error"> </span>
+    </p>
+    
+    <p>
+   	Last Name <br />
+    <input type="text" id="last-name"/> <span id="ln-error"> </span>
+    </p>
+    
+    <p>
+   	Email <br />
+    <input type="text" id="email"/> <span id="email-error"> </span>
+    </p>
+    
+    <p>
+    Confirm Email<br />
+    <input type="text" id="confirm"/> <span id="confirm-error"> </span>
+    </p>
+
+    <p>
+   	Phone Number <br />
+    <input type="text" id="phone"/> <span id="phone-error"> </span>
+    </p>
+    
+    <input type="button" value="submit" onclick="" />
+    </form>
+
+</div>
+
+<div id="confirmation">
+	<h1>Confirmation</h1>
+    <p id="info">
+    </p>
+</div>
+
+</body>
+
+<script>
+
+    var fields = document.querySelectorAll(`input[type="text"]`)
+    var spans = document.querySelectorAll(`span`)
+    var p = document.querySelectorAll(`p`)
+    var btn = document.querySelector(`input[type="button"]`)
+    var conf = document.getElementById(`confirmation`)
+    var form = document.getElementById(`form`)
+    var info = document.getElementById(`info`)
+
+    btn.addEventListener(`click`, validate)
+
+
+    function validate()
+    {
+
+        let correct = 0;
+
+        for (let i = 0; i < fields.length; i++)
+        {
+
+            if(fields[i].value.length === 0)
+            {
+                spans[i].innerText = "*"
+                p[i].setAttribute("class", "red")
+                
+                //do the error stuff .classlist.add(classname)
+            }
+            else
+            {
+                p[i].setAttribute("class", "")
+                spans[i].innerText = ""
+                correct += 1
+            }
+
+        }
+
+        if (!(fields[2].value === fields[3].value))
+            {
+                p[3].setAttribute("class", "red")
+                spans[3].innerText = "*"
+                correct -= 1
+            }
+
+        if (correct === 5)
+        {
+            form.setAttribute("style", "display:none;")
+            conf.setAttribute("style", "display:block;")
+
+            info.innerText = `${fields[0].value} ${fields[1].value}\n${fields[2].value}\n${fields[4].value}`
+
+        }
+
+    }
+
+</script>
+
+</html>
+

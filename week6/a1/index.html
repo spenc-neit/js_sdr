@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            border:1px solid black;
+            text-align: center;
+            width: 24px;
+            height: 24px;
+        }
+        table{
+            border:1px solid black;
+            border-spacing: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="text">
+        <input type="button" value="Generate Grid">
+    </form>
+
+    <br>
+    
+    <div id="tablediv">
+
+    </div>
+
+    <p id="avgO"></p>
+
+</body>
+
+<script>
+
+    var sdiv = document.querySelector(`div`)
+    var stext = document.querySelector(`input[type="text"]`)
+    var sbutton = document.querySelector(`input[type="button"]`)
+
+    sbutton.addEventListener(`click`, generate)
+
+    function randomNumber (min, max) {
+
+        return Math.floor (Math.random() * (max - min + 1)) + min;
+
+    }
+
+    function generate(e){
+
+        output = []
+
+        for(let i = 0; i < Number(stext.value); i++){
+            var d1 = []
+            for(let k = 0; k < Number(stext.value); k++){
+                d1.push(randomNumber(1,100))
+            }
+            output.push(d1)
+            
+        }
+
+        var html = `<table>`
+        var avg = 0
+
+        for (let u = 0; u < output.length; u++){
+
+            html += `<tr>`
+                for (let g = 0; g < output.length; g++){
+
+                    if (output[u][g] % 3 == 0){
+                        html += `<td style="background-color:indianred;">`
+                        html += String(output[u][g])
+                        html += `</td>`
+                    }
+                    else if (output[u][g] % 2 == 0){
+                        html += `<td style="background-color:skyblue;">`
+                        html += String(output[u][g])
+                        html += `</td>`
+                    }
+                    else{
+                        html += `<td>`
+                        html += String(output[u][g])
+                        html += `</td>`
+                    }
+
+                    avg += output[u][g]
+
+                }
+
+            html += `</tr>`
+        }
+
+        html += `</table>`
+
+        document.getElementById(`avgO`).innerText = `The average is ${avg / (Number(stext.value)**2)}`
+        sdiv.innerHTML = html
+        
+    }
+
+</script>
+</html>

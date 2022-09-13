@@ -242,20 +242,20 @@
 				
 			}
 
-			if(fresult == lresult && fresult != undefined){
+			if(fresult == lresult){
 				console.log(data[fresult])
-				outputs[0].innerHTML = `${data[fresult]["name"]["first"]} ${data[fresult]["name"]["last"]}<br>Salary: $${data[fresult]["salary"].toFixed(2)}`
+				outputs[0].innerHTML = `${data[fresult]["name"]["first"]} ${data[fresult]["name"]["last"]}<br>Salary: $${Number(data[fresult]["salary"]).toFixed(2)}`
 			}
 			else if (finput != "" && linput != "" && fresult != lresult){
 				outputs[0].innerHTML = `<span style="color:red;">Match not found.</span>`
 			}
 			else if (finput != ""){
-				outputs[0].innerHTML = `${data[fresult]["name"]["first"]} ${data[fresult]["name"]["last"]}<br>Salary: $${data[fresult]["salary"].toFixed(2)}`
+				outputs[0].innerHTML = `${data[fresult]["name"]["first"]} ${data[fresult]["name"]["last"]}<br>Salary: $${Number(data[fresult]["salary"]).toFixed(2)}`
 			}
 			else if (linput != ""){
-				outputs[0].innerHTML = `${data[lresult]["name"]["first"]} ${data[lresult]["name"]["last"]}<br>Salary: $${data[lresult]["salary"].toFixed(2)}`
+				outputs[0].innerHTML = `${data[lresult]["name"]["first"]} ${data[lresult]["name"]["last"]}<br>Salary: $${Number(data[lresult]["salary"]).toFixed(2)}`
 			}
-			else{
+			else if ((finput == undefined && linput == undefined) || (finput == "" && linput == "")){
 				outputs[0].innerHTML = `<span style="color:red;">Match not found. Both search bars are empty.</span>`
 			}
 				
